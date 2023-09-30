@@ -1,3 +1,10 @@
+const socket = io('/users');
+const storedUserName = localStorage.getItem('userName')
+socket.on("connect", function() {
+    const userName = getUserName()
+    socket.emit('add_user_to_list', userName)
+})
+
 const userCardsContainer = document.querySelector('#user-cards-container')
 
 const onJoinGameRequest = (userSocketId) => {

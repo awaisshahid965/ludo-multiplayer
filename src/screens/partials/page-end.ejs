@@ -1,0 +1,29 @@
+<script src="/socket.io.min.js" type="application/javascript"></script>
+
+<script type="application/javascript">
+    function getUserName() {
+        const storedUserName = localStorage.getItem('userName')
+        let userName = storedUserName ?? prompt("please enter your name:")
+        while(!userName) {
+            alert('Please enter correct username...')
+            userName = prompt("please enter your name:")
+        }
+        localStorage.setItem('userName', userName)
+        return userName
+    }
+
+    function onSocketConnect(socket) {
+        const userName = getUserName()
+        socket.emit('add_user_to_list', userName)
+    }
+</script>
+
+<script type="application/javascript">
+    const socket = io('/');
+    const storedUserName = localStorage.getItem('userName')
+    socket.on("connect", function(userName) {
+        onSocketConnect(socket)
+    })
+</script>
+</body>
+</html>

@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('./partials/page-starter.ejs') %>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    test ok!
-</body>
-<script src="/socket.io.min.js" type="application/javascript"></script>
-<script>
-    const socket = io('/');
-</script>
-</html>
+
+<section class="list_users">
+    <h1>- Choose any Worthy Opponent -</h1>
+    <div class="list_users__wrapper" id="user-cards-container">
+        <!-- code will add users here... -->
+    </div>
+</section>
+<%- include('./partials/page-end.ejs') %>
+<script type="application/javascript" src="/js/show-all-users.js"></script>

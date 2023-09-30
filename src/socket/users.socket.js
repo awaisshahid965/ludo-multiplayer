@@ -5,7 +5,7 @@ const refreshActiveUsersAcrossOtherSockets = (socketInstance) => {
     socketInstance.broadcast.emit("refresh_users")
 }
 
-function ludoSocketManager(socketInstance, io) {
+function usersSocketManager(socketInstance, io) {
     const socketId = socketInstance.id
     console.log(`ludo-socket-manager initialized with socket id: ${socketId}`)
 
@@ -31,6 +31,19 @@ function ludoSocketManager(socketInstance, io) {
     }
 }
 
+function onUserSocketNamespaceInitialization(io) {
+    const usersIo = io.of('/users')
+    .on('connection', function(socket) {
+
+        const { refreshActiveUsersAcrossOtherSockets } = usersSocketManager(socket, usersIo)
+
+        socket.on("disconnect", function() {
+            UserSocketManager.deleteUser(socket.id)
+            refreshActiveUsersAcrossOtherSockets(socket)
+        })
+    })
+}
+
 module.exports = {
-    ludoSocketManager
+    onUserSocketNamespaceInitialization
 }

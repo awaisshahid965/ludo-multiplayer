@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "18.15.0",
+    "npm": "9.8.0"
+  },
+  "engineStrict": true,
   "scripts": {
     "dev": "nodemon index",
     "start": "node index"

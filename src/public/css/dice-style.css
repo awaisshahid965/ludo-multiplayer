@@ -2,6 +2,25 @@
 *** GENERAL
 **********************************************/
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    font-size: 1.6rem;
+    color: #333;
+}
+
 .final-score {
     position: absolute;
     left: 50%;

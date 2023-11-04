@@ -9,8 +9,13 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'screens'));
 
-app.get('/', function(req, res) {
+app.get('/', function(_, res) {
     res.render('index');
+});
+
+app.get('/match/:roomid', function(req, res) {
+    const { roomid } = req.params
+    res.render('dice-game');
 });
 
 module.exports = {
